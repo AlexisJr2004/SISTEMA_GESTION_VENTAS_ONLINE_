@@ -1,0 +1,61 @@
+<head>
+  <%- include('../partials/head') %>
+  <title>SGV | Eliminar Ventas</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+  <!-- Navbar -->
+  <%- include('../partials/navbar') %>
+
+  <!-- Contenido -->
+  <section id="services" class="services">
+    <div class="container">
+      <br><br><br><br>
+      <div class="section-title" data-aos="fade-up">
+        <h2>ELIMINAR VENTAS</h2>
+        <p>Elimine una factura.</p>
+      </div>
+      <div class="container p-4">
+        <div class="row">
+          <% sales.forEach(function (sale) { %>
+            <div class="col-md-4">
+              <div class="card mb-3">
+                <div class="card-header">
+                  <h3 class="card-text text-center">FACTURA: <%= sale.factura %></h3>
+                </div>
+                <div class="card-body">
+                  <p class="card-text text-center"><strong>CLIENTE: </strong><br><%= sale.cliente %></p><hr>
+                  <p class="card-text text-center"><strong>FECHA: </strong><br><%= sale.fecha %> - <%= sale.hora %></p><hr>
+                  <p class="card-text text-center"><strong>DESCUENTO: </strong><%= sale.descuento %><br><strong>IVA: </strong><%= sale.iva %><br><strong>SUBTOTAL: </strong><%= sale.subtotal %></p><hr>
+                  <p class="card-text text-center"><strong>DETALLES: </strong></p>
+                  <% sale.detalle.forEach(function (item) { %>
+                    <p class="card-text text-center"><strong>Producto:</strong> <%= item.producto %><br><strong>Precio:</strong> <%= item.precio %><br><strong>Cantidad:</strong> <%= item.cantidad %></p>
+                  <% }) %>
+                </div>
+                <div class="card-footer">
+                  <p class="card-text text-center"><strong>TOTAL: </strong><%= sale.total %></p><hr>
+                  <button class="btn delete-button" data-factura="<%= sale.factura %>"><i class="fa-solid fa-square-minus"></i> Eliminar</button><hr>
+                </div>
+              </div>
+            </div>
+            <% }) %>
+        </div>
+      </div>
+    </div>
+    <div class="text-center">
+      <a href="/gestion_ventas" class="btn consult-button">
+        <i class="fa-solid fa-arrow-left"></i> Regresar
+      </a>
+    </div>
+  </section>
+  <script src="/js/sweet_alerts.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    // Llama la función una vez que el documento esté listo
+    $(document).ready(function() {
+      confirmarEliminacionFactura();
+    });
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+  <%- include('../partials/footer') %>
+</body>

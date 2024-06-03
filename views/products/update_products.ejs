@@ -1,0 +1,60 @@
+<head>
+  <%- include('../partials/head') %>
+  <title>SGV | Actualizar Productos</title>
+</head>
+<body>
+  <!-- Navbar -->
+  <%- include('../partials/navbar') %>
+
+<!-- Contenido -->
+<section id="services" class="services">
+  <div class="container">
+    <!-- Título y descripción de la sección -->
+    <div class="section-title" data-aos="fade-up">
+      <h2>CONSULTAR INFORMACIÓN DE PRODUCTOS</h2>
+      <p>Consulte información de productos.</p>
+    </div>
+    <!-- Contenedor de los productos -->
+    <div class="container p-4">
+      <div class="row">
+        <!-- Iteración sobre cada producto -->
+        <% products.forEach(function (product) { %>
+          <div class="col-md-4">
+            <div class="card mb-3">
+              <div class="card-header-update">
+                <!-- Avatar del producto -->
+                <div class="avatar-update">
+                  <img src="<%= product.imagen || 'https://cdn3d.iconscout.com/3d/premium/thumb/delivery-box-6377301-5298715.png?f=webp' %>" alt="Avatar">
+                </div>
+              </div>
+              <div class="card-body">
+                <!-- Descripción del producto -->
+                <h2 class="card-title text-center"><%= product.descripcion %></h2>
+              </div>
+              <div class="card-footer">
+                <p class="card-text text-center"><strong>ID: </strong><%= product.id %></p><hr>
+                <p class="card-text text-center"><strong>PRECIO: </strong><%= product.precio %></p><hr>
+                <p class="card-text text-center"><strong>STOCK: </strong><%= product.stock %></p><hr>
+                <button class="btn update-button" onclick="mostrarFormularioActualizacionProductos('<%= product.id %>')"><i class="fa-solid fa-pen-to-square"></i> Actualizar</button><hr>
+              </div>
+            </div>
+          </div>
+        <% }) %>
+      </div>
+    </div>
+    <div class="text-center">
+      <a href="/gestion_productos" class="btn consult-button">
+        <i class="fa-solid fa-arrow-left"></i> Regresar
+      </a>
+    </div>
+  </div>
+</section>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/validaciones.js"></script>
+  <%- include('../partials/footer') %>
+</body>
+</html>

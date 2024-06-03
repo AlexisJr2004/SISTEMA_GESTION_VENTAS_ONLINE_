@@ -1,0 +1,71 @@
+<head>
+  <%- include('../partials/head') %>
+  <title>SGV | Actualizar Clientes</title>
+</head>
+<body>
+  <!-- Navbar -->
+  <%- include('../partials/navbar') %>
+
+  <!-- Contenido -->
+  <section id="services" class="services">
+    <div class="container">
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="section-title" data-aos="fade-up">
+        <h2>ACTUALIZAR CLIENTES</h2>
+        <p>Actualice datos de clientes.</p>
+      </div>
+      <div class="container p-4">
+        <div class="row">
+          <% if (clients.length === 0) { %>
+            <div class="col-md-12 text-center">
+              <p>No hay clientes disponibles. Por favor, agregue clientes para visualizarlos.</p>
+            </div>
+          <% } else { %>
+            <% clients.forEach(function (client) { %>
+              <div class="col-md-4">
+                <div class="card mb-3">
+                  <div class="card-header-update">
+                    <div class="avatar-update">
+                      <img src="<%= client.imagen || 'https://cdn-icons-png.flaticon.com/512/12267/12267913.png' %>" alt="Avatar">
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <h2 class="card-title text-center"><%= client.nombre %> <%= client.apellido %></h2>
+                  </div>
+                  <div class="card-footer">
+                    <p class="card-text text-center"><strong>DNI: </strong><br><%= client.dni %><hr></p>
+                    <% if (client.valor) { %>
+                      <p class="card-text text-center"><strong>DESCUENTO: </strong><br><%= client.valor %><hr></p>
+                    <% } else { %>
+                      <p class="card-text text-center"><strong>DESCUENTO: </strong><br>No se le aplica un descuento al cliente.<hr></p>
+                    <% } %>
+                    <% if (client.tarjeta) { %>
+                      <p class="card-text text-center"><strong>TARJETA: </strong><br><%= client.numeroTarjeta %><hr></p>
+                    <% } else { %>
+                      <p class="card-text text-center"><strong>TARJETA: </strong><br>El cliente no tiene tarjeta<hr></p>
+                    <% } %>
+                    <p class="card-text text-center"><strong>TIPO DE CLIENTE: </strong><br><%= client.tipo %><hr></p>
+                    <button class="btn update-button" onclick="mostrarFormularioActualizacion('<%= client.id %>')"><i class="fa-solid fa-user-pen"></i> Actualizar</button><hr>
+                  </div>
+                </div>
+              </div>
+            <% }) %>
+          <% } %>
+        </div>
+      </div>
+      <div class="text-center">
+        <a href="/gestion_clientes" class="btn consult-button">
+          <i class="fa-solid fa-arrow-left"></i> Regresar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="/js/validaciones.js"></script>
+  <%- include('../partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "descripcion": "Ruffles",
+    "precio": 1,
+    "stock": 65,
+    "imagen": "https://www.supermercadosantamaria.com/documents/10180/10504/172205854_G.jpg"
+  },
+  {
+    "id": 2,
+    "descripcion": "De Todito 50 G",
+    "precio": 1,
+    "stock": 75,
+    "imagen": "https://www.fybeca.com/dw/image/v2/BDPM_PRD/on/demandware.static/-/Sites-masterCatalog_FybecaEcuador/default/dw4b0dfec4/images/large/100245440-DE-TODITO-SNACK-EVRCRISP-SABOR-NATURAL-50-G-UNIDAD.jpg?sw=1000&sh=1000"
+  },
+  {
+    "id": 3,
+    "descripcion": "Zanahorias",
+    "precio": 0.25,
+    "stock": 86,
+    "imagen": ""
+  },
+  {
+    "id": 4,
+    "descripcion": "Yuquitas",
+    "precio": 1,
+    "stock": 90,
+    "imagen": "https://ohanasnacks.com/wp-content/uploads/2020/09/Yuquitas-01.png"
+  },
+  {
+    "id": 5,
+    "descripcion": "Pollo asado",
+    "precio": 15.5,
+    "stock": 96,
+    "imagen": "https://myplate-prod.azureedge.us/sites/default/files/styles/large/public/2021-09/OvenRoastedChicken_527x323.jpg?itok=cnlnt4vd"
+  },
+  {
+    "id": 6,
+    "descripcion": "Pavo en salsa chimichurri",
+    "precio": 25,
+    "stock": 96,
+    "imagen": "https://okdiario.com/img/2024/01/29/filete-de-pavo-al-chimichurri.jpg"
+  },
+  {
+    "id": 7,
+    "descripcion": "Pony malta",
+    "precio": 1.25,
+    "stock": 100,
+    "imagen": "https://shop.ecuaworldla.com/cache/original/product/176/8RDJgqTnELaQeqdLYdWTugdN5QII6m2exo09PwvI.jpg"
+  },
+  {
+    "id": 8,
+    "descripcion": "Corona",
+    "precio": 3.5,
+    "stock": 80,
+    "imagen": "https://catu.ec/wp-content/uploads/2022/03/Cerveza-Corona-Extra-355ml-Modelo.jpg"
+  }
+]

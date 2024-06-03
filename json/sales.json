@@ -1,0 +1,134 @@
+[
+  {
+    "factura": "2",
+    "fecha": "2024-05-16",
+    "hora": "08:23:57",
+    "cliente": "Al Bajad Mamad",
+    "subtotal": 15,
+    "descuento": 0.1,
+    "iva": 0.15,
+    "total": 15.15,
+    "detalle": [
+      {
+        "producto": "De Todito 50 G",
+        "precio": 1,
+        "cantidad": 5
+      },
+      {
+        "producto": "Ruffles",
+        "precio": 1,
+        "cantidad": 5
+      },
+      {
+        "producto": "Yuquitas",
+        "precio": 1,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "factura": "3",
+    "fecha": "2024-05-16",
+    "hora": "08:35:13",
+    "cliente": "Al Bajad Mamad",
+    "subtotal": 1,
+    "descuento": 0.1,
+    "iva": 0.15,
+    "total": 1.05,
+    "detalle": [
+      {
+        "producto": "Zanahorias",
+        "precio": 0.25,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "factura": "4",
+    "fecha": "2024-05-16",
+    "hora": "08:49:33",
+    "cliente": "Vinicius Jr",
+    "subtotal": 27.5,
+    "descuento": 0.1,
+    "iva": 0.15,
+    "total": 27.65,
+    "detalle": [
+      {
+        "producto": "Zanahorias",
+        "precio": 0.25,
+        "cantidad": 10
+      },
+      {
+        "producto": "De Todito 50 G",
+        "precio": 1,
+        "cantidad": 20
+      },
+      {
+        "producto": "Yuquitas",
+        "precio": 1,
+        "cantidad": 5
+      }
+    ]
+  },
+  {
+    "factura": "5",
+    "fecha": "2024-05-16",
+    "hora": "08:48:10",
+    "cliente": "Juan Simdulfo",
+    "subtotal": 30,
+    "descuento": 0,
+    "iva": 0.15,
+    "total": 30.15,
+    "detalle": [
+      {
+        "producto": "Ruffles",
+        "precio": 1,
+        "cantidad": 20
+      },
+      {
+        "producto": "Ruffles",
+        "precio": 1,
+        "cantidad": 10
+      }
+    ]
+  },
+  {
+    "factura": "6",
+    "fecha": "2024-05-16",
+    "hora": "12:36:24",
+    "cliente": "Mark Zuckerberg",
+    "subtotal": 131,
+    "descuento": 0.1,
+    "iva": 0.15,
+    "total": 131.05,
+    "detalle": [
+      {
+        "producto": "Pollo asado",
+        "precio": 15.5,
+        "cantidad": 2
+      },
+      {
+        "producto": "Pavo en salsa chimichurri",
+        "precio": 25,
+        "cantidad": 4
+      }
+    ]
+  },
+  {
+    "factura": "7",
+    "fecha": "2024-05-16",
+    "hora": "12:42:41",
+    "cliente": "Juan Simdulfo",
+    "subtotal": 31,
+    "descuento": 0,
+    "iva": 0.15,
+    "total": 31.15,
+    "detalle": [
+      {
+        "producto": "Pollo asado",
+        "precio": 15.5,
+        "cantidad": 2
+      }
+    ]
+  }
+]

@@ -1,0 +1,53 @@
+<head>
+  <%- include('../partials/head') %>
+  <title>SGV | Eliminar Productos</title>
+</head>
+<body>
+  <!-- Navbar -->
+  <%- include('../partials/navbar') %>
+
+  <!-- Contenido -->
+  <section id="services" class="services">
+    <div class="container">
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="section-title" data-aos="fade-up">
+        <h2>ELIMINAR PRODUCTOS</h2>
+        <p>Elimine productos específicos.</p>
+      </div>
+      <div class="container p-4">
+        <div class="row">
+          <% products.forEach(function (product) { %>
+            <div class="col-md-4">
+                <div class="card mb-3">
+                  <div class="card-header-delete">
+                    <div class="avatar-delete">
+                      <img src="<%= product.imagen || 'https://cdn3d.iconscout.com/3d/premium/thumb/delivery-box-6377301-5298715.png?f=webp' %>" alt="Avatar">
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <h2 class="card-title text-center"><%= product.descripcion %></h2>
+                  </div>
+                  <div class="card-footer">
+                    <p class="card-text text-center"><strong>ID: </strong><%= product.id %></p><hr>
+                    <p class="card-text text-center"><strong>PRECIO: </strong><%= product.precio %></p><hr>
+                    <p class="card-text text-center"><strong>STOCK: </strong><%= product.stock %></p><hr>
+                    <button class="btn delete-button" onclick="confirmarEliminacionProducto('<%= product.id %>')"><i class="fa-solid fa-trash"></i> Eliminar</button><hr>
+                  </div>
+                </div>
+            </div>
+        <% }) %>
+        </div>
+      </div>
+      <div class="text-center">
+        <a href="/gestion_productos" class="btn consult-button">
+          <i class="fa-solid fa-arrow-left"></i> Regresar
+        </a>
+      </div>
+    </div>
+  </section>
+  <%- include('../partials/footer') %>
+</body>
+</html>

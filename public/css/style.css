@@ -1,0 +1,720 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+/*--------------------------------------------------------------
+# General
+--------------------------------------------------------------*/
+body {
+  font-family: "Space Grotesk", sans-serif;
+  color: #444444;
+}
+  
+a {
+  color: #3498db;
+  text-decoration: none;
+}
+
+/*--------------------------------------------------------------
+# Boton ir Arriba
+--------------------------------------------------------------*/
+.back-to-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: 15px;
+  z-index: 996;
+  background: #3498db;
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+  transition: all 0.4s;
+}
+
+.back-to-top i {
+  font-size: 28px;
+  color: #fff;
+  line-height: 0;
+}
+
+.back-to-top:hover {
+  background: #57aae1;
+  color: #fff;
+}
+
+.back-to-top.active {
+  border-radius: 15px;
+  visibility: visible;
+  opacity: 1;
+}
+
+
+/*--------------------------------------------------------------
+# Header
+--------------------------------------------------------------*/
+#header {
+  z-index: 997;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s;
+  padding: 22px 0;
+  background: #fff;
+  border-radius: 20px;
+}
+
+#header.header-scrolled {
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  padding: 12px 0;
+}
+
+#header .logo img {
+  max-height: 100px; /* Define una altura máxima para el logo */
+  width: auto; /* Permitir que el ancho se ajuste automáticamente según la altura máxima */
+  display: block; /* Asegura que la imagen se comporte como un bloque para manejar márgenes y alineaciones */
+  margin: 0 auto; /* Centra el logo horizontalmente */
+}
+/*--------------------------------------------------------------
+# Menú de Navegación
+--------------------------------------------------------------*/
+.navbar {
+  padding: 0;
+}
+
+.navbar ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+.navbar li {
+  position: relative;
+  
+}
+
+.navbar a,
+.navbar a:focus {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0 10px 30px;
+  font-size: 15px;
+  font-weight: 400;
+  color: #555555;
+  white-space: nowrap;
+  transition: 0.3s;
+  font-size: 16px;
+}
+
+.navbar a i,
+.navbar a:focus i {
+  font-size: 12px;
+  line-height: 0;
+  margin-left: 5px;
+}
+
+.navbar a:hover,
+.navbar .active,
+.navbar .active:focus,
+.navbar li:hover>a {
+  color: #3498db;
+}
+
+.navbar .getstarted,
+.navbar .getstarted:focus {
+  background: #3498db;
+  padding: 8px 25px;
+  margin-left: 30px;
+  border-radius: 50px;
+  color: #fff;
+}
+
+.navbar .getstarted:hover,
+.navbar .getstarted:focus:hover {
+  color: #fff;
+  background: #4aa3df;
+}
+
+.navbar .dropdown ul {
+  display: block;
+  position: absolute;
+  left: 30px;
+  top: calc(100% + 30px);
+  margin: 0;
+  padding: 10px 0;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  background: #fff;
+  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+  transition: 0.3s;
+  border-radius: 4px;
+}
+
+.navbar .dropdown ul li {
+  min-width: 200px;
+}
+
+.navbar .dropdown ul a {
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+.navbar .dropdown ul a i {
+  font-size: 12px;
+}
+
+.navbar .dropdown ul a:hover,
+.navbar .dropdown ul .active:hover,
+.navbar .dropdown ul li:hover>a {
+  color: #3498db;
+}
+
+.navbar .dropdown:hover>ul {
+  opacity: 1;
+  top: 100%;
+  visibility: visible;
+}
+
+.navbar .dropdown .dropdown ul {
+  top: 0;
+  left: calc(100% - 30px);
+  visibility: hidden;
+}
+
+.navbar .dropdown .dropdown:hover>ul {
+  opacity: 1;
+  top: 0;
+  left: 100%;
+  visibility: visible;
+}
+
+@media (max-width: 1366px) {
+  .navbar .dropdown .dropdown ul {
+    left: -90%;
+  }
+
+  .navbar .dropdown .dropdown:hover>ul {
+    left: -100%;
+  }
+}
+
+/*--------------------------------------------------------------
+# Sections General
+--------------------------------------------------------------*/
+.title, h3{
+  text-transform: uppercase;
+}
+
+section {
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.section-bg {
+  background-color: #f7fbfe;
+}
+
+.section-title {
+  text-align: center;
+  padding-bottom: 30px;
+}
+
+.section-title h2 {
+  font-size: 28px;
+  font-weight: bold;
+  text-transform: uppercase;
+  position: relative;
+  color: #222222;
+}
+
+.section-title h2::before,
+.section-title h2::after {
+  content: "";
+  width: 50px;
+  height: 2px;
+  background: #0dcaf0;
+  display: inline-block;
+}
+
+.section-title h2::before {
+  margin: 0 15px 10px 0;
+}
+
+.section-title h2::after {
+  margin: 0 0 10px 15px;
+}
+
+.section-title p {
+  margin: 15px 0 0 0;
+  font-size: 20px;
+}
+
+
+/*--------------------------------------------------------------
+# Sección de Servicios
+--------------------------------------------------------------*/
+.services .icon-box {
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 0 29px 0 rgba(68, 88, 144, 0.12);
+  transition: all 0.3s ease-in-out;
+  border-radius: 25px;
+  z-index: 1;
+}
+
+.services .icon-box::before {
+  content: "";
+  position: absolute;
+  background: #e1f0fa;
+  right: -60px;
+  top: -40px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50px;
+  transition: all 0.3s;
+  z-index: -1;
+}
+
+
+.services .icon-box.card1:hover::before {
+  background: #3498db;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+}
+
+.services .icon-box.card2:hover::before {
+  background: #d334e3; 
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+}
+
+.services .icon-box.card3:hover::before {
+  background: #2ecc71; 
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+}
+.services .icon-box.card4:hover::before {
+  background: #d9b01c; 
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 25px;
+}
+
+.services .icon {
+  margin: 0 auto 20px auto;
+  padding-top: 10px;
+  display: inline-block;
+  text-align: center;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  background: #3498db;
+  transition: all 0.3s ease-in-out;
+}
+
+.services .icon i {
+  font-size: 36px;
+  line-height: 1;
+  color: #fff;
+}
+
+.services .title {
+  font-weight: 700;
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.services .title a {
+  color: #111;
+}
+
+.services .description {
+  font-size: 15px;
+  line-height: 28px;
+  margin-bottom: 0;
+}
+
+.services .icon-box:hover .title a,
+.services .icon-box:hover .description {
+  color: #fff;
+}
+
+.services .icon-box:hover .icon {
+  background: #fff;
+}
+
+.services .icon-box:hover .icon i {
+  color: #3498db;
+}
+
+/*--------------------------------------------------------------
+# Sección de Características
+--------------------------------------------------------------*/
+.features .icon-box {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background: #f6f6f6;
+  transition: ease-in-out 0.3s;
+  border-radius: 25px;
+  box-shadow: 0 0 29px 0 rgba(255, 237, 237, 0.12);
+}
+
+.features .icon-box i {
+  font-size: 32px;
+  padding-right: 10px;
+  line-height: 1;
+}
+
+.icon-box h3 {
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-size: 16px;
+}
+
+.icon-box h3 a {
+  color: #222222;
+  transition: ease-in-out 0.3s;
+}
+
+.icon-box h3 a:hover {
+  color: #3498db;
+}
+
+.icon-box:hover {
+  background: #eef7fc;
+}
+
+
+/*--------------------------------------------------------------
+# Sección de Equipos
+--------------------------------------------------------------*/
+.team .member {
+  margin-bottom: 20px;
+  overflow: hidden;
+  text-align: center;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 25px;
+}
+
+.member-info {
+  padding: 25px 15px;
+}
+
+h4 {
+  font-weight: 700;
+  margin-bottom: 5px;
+  font-size: 18px;
+  color: #222222;
+}
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+#footer {
+  background: #fff;
+  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.1);
+  padding: 30px 0;
+  color: #222222;
+  font-size: 18px;
+  text-align: center;
+}
+
+
+.section-title h2 {
+  padding-top: 5%;
+  color: #000000;
+}
+
+.section-title p {
+  color: #6c757d;
+}
+
+.card {
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 6px rgba(255, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease; /* Agrega una transición suave a la propiedad box-shadow */
+}
+
+.card:hover {
+  box-shadow: 0 10px 12px rgba(0, 0, 0, 0.2); /* Cambia la sombra al pasar el cursor sobre la tarjeta */
+}
+
+.card-body {
+  padding: 10px 10px;
+}
+
+.card-footer {
+  background-color: #f8f9fa;
+  border-top: none;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  text-align: center;
+}
+/* CONSULTAR CLIENTES */
+.card-header-consult {
+  background-image: linear-gradient(90deg, rgba(52,152,219,1) 0%, rgba(187,220,242,1) 35%);
+  color: #fff;
+  border-bottom: none;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  text-align: center;
+  padding: 10px 10px 10px 10px;
+
+}
+
+.avatar {
+  width: 150px; /* Establece el ancho deseado para la imagen */
+  height: 150px; /* Establece la altura deseada para la imagen */
+  border: #3498db 4px solid;
+  background-color: #dee2e6;
+  border-radius: 10px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* ACTUALIZAR CLIENTES  */
+.card-header-update {
+  background-image: linear-gradient(90deg, rgba(255,162,104,1) 10%, rgb(223, 109, 38) 35%);
+  color: #fff;
+  border-bottom: none;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  text-align: center;
+  padding: 10px 10px 10px 10px;
+}
+
+.avatar-update {
+  width: 150px;
+  height: 150px;
+  border: rgb(216, 91, 13) 4px solid;
+  background-color: rgb(255, 159, 99);
+  border-radius: 10px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.avatar-update img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ELIMINAR CLIENTES */
+.card-header-delete {
+  background-image: linear-gradient(90deg, #dc3545 0%, #790813 35%);
+  color: #fff;
+  border-bottom: none;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  text-align: center;
+  padding: 10px 10px 10px 10px;
+}
+
+.avatar-delete {
+  width: 150px; /* Establece el ancho deseado para la imagen */
+  height: 150px; /* Establece la altura deseada para la imagen */
+  border: #e4505f 4px solid;
+  border-radius: 10px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.avatar-delete img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card.card-body {
+  overflow-x: hidden;
+}
+
+label, form-label{
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 18px;
+}
+
+hr {
+  border: 0; /* Elimina el borde predeterminado */
+  height: 1px; /* Establece la altura de la línea */
+  background-color: #ccc; /* Color de fondo de la línea */
+  margin: 20px 0; /* Espacio vertical alrededor de la línea */
+}
+
+.spinner {
+  width: 200px;
+  height: 200px;
+  background: #3498db;
+  border-radius: 50%;
+  overflow: hidden;
+  animation: spin 6s linear infinite;
+}
+
+.pedro-pedro {
+  display: block;
+  width: 100%;
+  animation: bounce 0.2s linear infinite alternate;
+  
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(-1turn);
+  }
+}
+
+@keyframes bounce {
+  to {
+    translate: 0 20px;
+  }
+}
+.card-title {
+  text-transform: uppercase;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.btn.btn-danger-sales {
+  background-color: #dc3545;
+  color: #fff;
+  border-color: #dc3545;
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.btn.btn-danger-sales:hover {
+  color: #fff;
+  background-color: #830915;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+  font-size: 18px;
+  text-align: center;
+}
+
+.table-bordered {
+  border: 1px solid #dee2e6;
+}
+
+.table-hover tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+
+.thead-dark th {
+  color: #fff;
+  background-color: #3498db;
+  border-color: #228fd8;
+}
+
+.table th,
+.table td {
+  padding: 1rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
+.table .thead-dark th {
+  padding: 1rem;
+  border-bottom: 2px solid #dee2e6;
+  font-size: 20px;
+}
+
+.card-text{
+  font-size: 18px;
+}
+
+h4 {
+  margin-bottom: 0;
+  font-size: 18px;
+}
+
+/* BOTONES */
+.update-button {
+  background: #16b658;
+  color: #fff;
+  border: none;
+  transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+  font-size: 18px;
+  text-transform: uppercase;
+  padding: 10px 20px; 
+  border-radius: 5px;  
+  cursor: pointer; 
+  background-size: 200% 100%; 
+  background-position: left bottom; 
+}
+
+.update-button:hover {
+  background: #057e37; 
+  background-position: right bottom; 
+  color: #fff;
+}
+
+.consult-button {
+  background: #007bff; 
+  color: #fff;
+  border: none;
+  transition: background 0.5s ease-in-out, color 0.5s ease-in-out; 
+  font-size: 18px;
+  text-transform: uppercase;
+  padding: 10px 20px; 
+  border-radius: 10px; 
+  cursor: pointer; 
+  background-size: 200% 100%; 
+  background-position: left bottom;
+  margin: 30px;
+}
+
+.consult-button:hover {
+  background: #02458d; 
+  background-position: right bottom;
+  color: #fff;
+}
+
+.delete-button {
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  transition: background 0.5s ease-in-out, color 0.5s ease-in-out;
+  font-size: 18px;
+  text-transform: uppercase;
+  padding: 10px 20px; 
+  border-radius: 10px; 
+  cursor: pointer; 
+  background-size: 200% 100%;
+  background-position: left bottom; 
+}
+
+.delete-button:hover {
+  background: #830915; 
+  background-position: right bottom;
+  color: #fff;
+}
+

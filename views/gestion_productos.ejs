@@ -1,0 +1,57 @@
+<head>
+  <%- include('partials/head') %>
+  <title>SGV | Gestión de Productos</title>
+</head>
+<body>
+  <%- include('partials/navbar') %>
+  <section id="services" class="services">
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="container">
+  
+      <div class="section-title" data-aos="fade-up">
+        <h2>¡BIENVENIDO A LA SECCIÓN DE GESTIONAMIENTO DE PRODUCTOS!</h2>
+        <h2>Servicios</h2>
+        <p>Descubra los diferentes servicios que podemos ofrecerle:</p>
+      </div>
+  
+      <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+          <div class="icon-box card1" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon"><i class="fas fa-plus"></i></div>
+            <h4 class="title"><a href="/products/create">Agregar de Productos</a></h4>
+            <p class="description">En este módulo podrás agregar nuevos productos en el inventario de la empresa.</p>
+          </div>
+        </div>
+  
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+          <div class="icon-box card2" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon"><i class="fas fa-edit"></i></div>
+            <h4 class="title"><a href="/products/update">Actualizar Productos</a></h4>
+            <p class="description">En este módulo podrás editar la información de un producto es espesífico.</p>
+          </div>
+        </div>
+  
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+          <div class="icon-box card3" data-aos="fade-up" data-aos-delay="300">
+            <div class="icon"><i class="fas fa-search"></i></div>
+            <h4 class="title"><a href="/products/consult">Consultar Productos</a></h4>
+            <p class="description">En este módulo podrár consultar todos los productos que se encuentran registrados en el inventario de tu empresa.</p>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+            <div class="icon-box card4" data-aos="fade-up" data-aos-delay="400">
+              <div class="icon"><i class="fas fa-trash-alt"></i></div>
+              <h4 class="title"><a href="/products/delet">Eliminar Productos</a></h4>
+              <p class="description">En este módulo podrás eliminar productos del inventario de tu empresa de forma permanente.</p>
+            </div>
+          </div>
+      </div>
+    </div>
+  </section>
+  <%- include('partials/footer') %>
+</body>
+</html>

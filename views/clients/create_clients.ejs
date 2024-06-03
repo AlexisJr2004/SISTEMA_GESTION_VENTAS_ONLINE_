@@ -1,0 +1,154 @@
+<head>
+  <%- include('../partials/head') %>
+  <title>SGV | Crear Clientes</title>
+</head>
+<body>
+  <%- include('../partials/navbar') %>
+  <!-- Contenido -->
+  <section id="services" class="services">
+    <div class="container">
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="section-title" data-aos="fade-up">
+        <h2>INGRESAR CLIENTES</h2>
+        <p>Ingrese los datos para registrar un nuevo cliente.</p>
+      </div>
+      <form id="form" class="card card-body bg-light p-4 rounded" method="POST" action="/clients/create" onsubmit="validarFormulario(event)">
+        <fieldset>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label for="dni" class="form-label">DNI:</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fa-solid fa-id-card"></i></span>
+                  <input type="text" class="form-control" id="dni" name="dni" required>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre:</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                  <input type="text" class="form-control" id="nombre" name="nombre" required>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-3">
+                <label for="apellido" class="form-label">Apellido:</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fa-solid fa-user-check"></i></span>
+                  <input type="text" class="form-control" id="apellido" name="apellido" required>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="imagen" class="form-label">URL Imagen:</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="fa-solid fa-image"></i></span>
+              <input type="text" class="form-control" id="imagen" name="imagen">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="tipo" class="form-label">Tipo:</label>
+                <select class="form-select" id="tipo" name="tipo">
+                  <option value="Regular">Regular</option>
+                  <option value="VIP">VIP</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="valor" class="form-label">Aplica para un descuento de:</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fa-solid fa-percent"></i></span>
+                  <input type="text" step="0.01" class="form-control" id="valor" name="valor" value='0'>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mb-3">
+                <label for="tarjeta" class="form-label">Tarjeta:</label>
+                <select class="form-select" id="tarjeta" name="tarjeta">
+                  <option value="no">No</option>
+                  <option value="si">Sí</option>
+                </select>
+              </div>
+            </div>
+               
+            <div class="col-md-6" id="numeroTarjetaContainer" style="display: none;">
+              <div class="mb-3">
+                  <label for="numeroTarjeta" class="form-label">Número de tarjeta:</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fa-solid fa-credit-card"></i></span>
+                    <input type="text" class="form-control" id="numeroTarjeta" name="numeroTarjeta" maxlength="19">
+                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn consult-button"><i class="fa-solid fa-user-plus"></i> Agregar cliente</button>
+          </div>
+        </fieldset>
+      </form>
+      <div class="text-center">
+        <a href="/gestion_clientes" class="btn consult-button">
+          <i class="fa-solid fa-arrow-left"></i> Regresar
+        </a>
+      </div>
+    </div>
+  </section>
+  <script>
+    // Obtener referencias a los elementos del formulario
+    const tipoCliente = document.getElementById('tipo');
+    const tipoTarjeta = document.getElementById('tarjeta');
+    const descuento = document.getElementById('valor');
+    const numeroTarjetaContainer = document.getElementById('numeroTarjetaContainer');
+
+    // Manejar el evento de cambio en el tipo de tarjeta
+    tipoTarjeta.addEventListener('change', function () {
+        // Obtener el valor seleccionado para el tipo de tarjeta
+        const tarjetaSeleccionada = tipoTarjeta.value;
+        if (tarjetaSeleccionada === 'si') {
+            descuento.value = "0.10"; // Establecer el valor de descuento si se selecciona "Sí"
+        } else {
+            descuento.value = "0"; // Restablecer el valor de descuento si se selecciona "No"
+        }
+    });
+  </script>
+  <script>
+    document.getElementById('numeroTarjeta').addEventListener('input', function (e) {
+        var inputValue = e.target.value.replace(/\D/g, '').substring(0, 16); // Elimina cualquier caracter que no sea un dígito y limita la longitud a 16 dígitos
+        var newValue = '';
+        for (var i = 0; i < inputValue.length; i++) {
+            if (i % 4 === 0 && i > 0) {
+                newValue += '-'; // Agrega un espacio cada 4 dígitos para simular el formato de una tarjeta de crédito
+            }
+            newValue += inputValue[i];
+        }
+        e.target.value = newValue;
+    });
+  </script>
+  <script>
+    document.getElementById('tarjeta').addEventListener('change', function() {
+      var numeroTarjetaContainer = document.getElementById('numeroTarjetaContainer');
+      if (this.value === 'si') {
+        numeroTarjetaContainer.style.display = 'block';
+      } else {
+        numeroTarjetaContainer.style.display = 'none';
+      }
+    });
+  </script>
+
+  <script src="/js/validaciones.js"></script>
+  <%- include('../partials/footer') %>
+</body>

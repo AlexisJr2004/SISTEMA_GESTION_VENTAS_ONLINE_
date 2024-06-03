@@ -1,0 +1,115 @@
+<head>
+  <%- include('../partials/head') %>
+  <title>SGV | Consultar Ventas</title>
+</head>
+<body>
+  <!-- Navbar -->
+  <%- include('../partials/navbar') %>
+
+  <!-- Contenido -->
+  <section id="services" class="services">
+    <div class="container">
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="section-title" data-aos="fade-up">
+        <h2>CONSULTAR INFORMACION DE VENTAS</h2>
+        <p>Consulte informacion de ventas.</p>
+      </div>
+      <div class="container p-4">
+        <div class="row">
+          <% sales.forEach(function (sale) { %>
+          <div class="col-md-4">
+            <div class="card mb-3">
+              <div class="card-header">
+                <h3 class="card-text text-center">FACTURA: <%= sale.factura %></h3>
+              </div>
+              <div class="card-body">
+                <p class="card-text text-center"><strong>CLIENTE: </strong><br><%= sale.cliente %></p><hr>
+                <p class="card-text text-center"><strong>FECHA: </strong><br><%= sale.fecha %> - <%= sale.hora %></p><hr>
+                <p class="card-text text-center"><strong>DESCUENTO: </strong><%= sale.descuento %><br><strong>IVA: </strong><%= sale.iva %><br><strong>SUBTOTAL: </strong><%= sale.subtotal %></p><hr>
+                <p class="card-text text-center"><strong>DETALLES: </strong></p>
+                <% sale.detalle.forEach(function (item) { %>
+                  <p class="card-text text-center"><strong>Producto:</strong> <%= item.producto %><br><strong>Precio:</strong> <%= item.precio %><br><strong>Cantidad:</strong> <%= item.cantidad %></p>
+                <% }) %>
+              </div>
+              <div class="card-footer">
+                <p class="card-text text-center"><strong>TOTAL: </strong><%= sale.total %></p>
+              </div>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <a href="/gestion_ventas" class="btn consult-button">
+          <i class="fa-solid fa-arrow-left"></i> Regresar
+        </a>
+      </div>
+      
+      <div class="section-title" data-aos="fade-up">
+        <h2>Información Adicional</h2>
+        <div class="container p-4">
+          <div class="row">
+            <div class="col-md-12">
+              <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                  <tr>
+                    <th><i class="fa-solid fa-square-poll-vertical"></i> ESTADÍSTICA DE FACTURAS</th>
+                    <th><i class="fa-solid fa-piggy-bank"></i> VALOR</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><h4><i class="fas fa-receipt"></i> Total de facturas registradas:</h4></td>
+                    <td id="totalInvoices">0</td>
+                  </tr>
+                  <tr>
+                    <td><h4><i class="fas fa-coins"></i> Suma total de todas las facturas:</h4></td>
+                    <td id="totalSum"> 0.00</td>
+                  </tr>
+                  <tr>
+                    <td><h4><i class="fas fa-arrow-up"></i> Valor máximo de una factura:</h4></td>
+                    <td id="maxInvoice"><i class="fas fa-dollar-sign"></i> 0.00</td>
+                  </tr>
+                  <tr>
+                    <td><h4><i class="fas fa-arrow-down"></i> Valor mínimo de una factura:</h4></td>
+                    <td id="minInvoice"><i class="fas fa-dollar-sign"></i> 0.00</td>
+                  </tr>
+                  <tr>
+                    <td><h4><i class="fas fa-coins"></i> Suma del total de todas las facturas:</h4></td>
+                    <td id="totalSumAll"><i class="fas fa-dollar-sign"></i> 0.00</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>          
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+  <!-- Scripts -->
+  <script>
+    const sales = <%- JSON.stringify(sales) %>;
+    const totalInvoices = sales.length;
+    const totalSum = sales.reduce((sum, sale) => sum + parseFloat(sale.total), 0);
+    const maxInvoice = Math.max(...sales.map(sale => parseFloat(sale.total)));
+    const minInvoice = Math.min(...sales.map(sale => parseFloat(sale.total)));
+    const totalSumAll = sales.reduce((sum, sale) => sum + parseFloat(sale.total), 0);
+
+    // Actualizar los valores en la tabla
+    document.getElementById('totalInvoices').innerHTML = `<td class="text-center"><i class="fas fa-file-invoice"></i> ${totalInvoices}</td>`;
+    document.getElementById('totalSum').innerHTML = `<td class="text-center"><i class="fas fa-dollar-sign"></i> ${totalSum.toFixed(2)}</td>`;
+    document.getElementById('maxInvoice').innerHTML = `<td class="text-center"><i class="fas fa-arrow-alt-circle-up"></i> ${maxInvoice.toFixed(2)}</td>`;
+    document.getElementById('minInvoice').innerHTML = `<td class="text-center"><i class="fas fa-arrow-alt-circle-down"></i> ${minInvoice.toFixed(2)}</td>`;
+    document.getElementById('totalSumAll').innerHTML = `<td class="text-center"><i class="fas fa-chart-line"></i> ${totalSumAll.toFixed(2)}</td>`;
+
+
+  </script>
+  <%- include('../partials/footer') %>
+</body>
+</html>

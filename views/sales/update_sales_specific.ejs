@@ -1,0 +1,203 @@
+<head>
+  <%- include('../partials/head') %>
+    <title>SGV | Actualizar Venta</title>
+</head>
+
+<body>
+  <%- include('../partials/navbar') %>
+    <!-- Contenido -->
+    <section id="services" class="services">
+      <div class="container">
+        <br> <br> <br>
+        <div class="section-title" data-aos="fade-up">
+          <h2>ACTUALIZAR VENTAS</h2>
+          <p>Ingrese los datos para actualizar una nueva venta.</p>
+        </div>
+        <form id="form" class="card card-body bg-light p-4 rounded"">
+          <fieldset>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="factura" class="form-label">Numero de factura:</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fa-solid fa-file-invoice"></i></span>
+                    <input id="factura" class="form-control" value="<%= sale.factura %>" readonly>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="newFecha" class="form-label">Fecha:</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fa-solid fa-calendar"></i></span>
+                    <input id="newFecha" class="form-control" placeholder="Nueva Fecha" value="<%= sale.fecha %>">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="newHora" class="form-label">Hora:</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fa-solid fa-clock fa-spin"></i></span>
+                    <input type="text" id="newHora" class="form-control" placeholder="Nueva Hora" value="<%= sale.hora %>">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="ci" class="form-label text-center">Cedula:</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fa-solid fa-id-card"></i></span>
+                    <input type="text" class="form-control" id="ci" name="ci" required onblur="updateSales.verificarCedula()">
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="newCliente" class="form-label text-center">Cliente:</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fa-solid fa-user-pen"></i></span>
+                    <input id="newCliente" class="form-control" placeholder="Nuevo Cliente" value="<%= sale.cliente %>" readonly>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="subtotal" class="form-label">Subtotal:</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-file-invoice-dollar"></i></span>
+                    <input type="number" class="form-control" id="subtotal" name="subtotal" readonly>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="descuento" class="form-label">Descuento:</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-percent"></i></span>
+                    <input type="number" class="form-control" id="descuento" name="descuento" readonly>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="iva" class="form-label">IVA:</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-coins"></i></span>
+                    <input type="number" class="form-control" id="iva" name="iva" value="0.15" readonly step="0.01">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row justify-content-center">
+              <div class="col-md-4">
+                <div class="mb-3">
+                  <label for="total" class="form-label text-center">Total:</label>
+                  <div class="input-group">
+                    <span class="input-group-text"><i class="fa-solid fa-wallet fa-bounce"></i></span>
+                    <input style="border: 5px solid rgb(0, 255, 0)" type="number" class="form-control" id="total" name="total" readonly>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="mb-3 text-center">
+              <button type="button" class="btn consult-button" onclick="updateSales.agregarFilaProducto()">
+                <i class="fa-solid fa-square-plus"></i> Agregar Producto
+              </button>
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn consult-button">
+                <i class="fas fa-save"></i> Actualizar Venta
+              </button>
+            </div>
+            <br>
+            <div id="product-inputs" class="container">
+              <!-- Usar un bucle para generar filas -->
+              <% for (var i=0; i < numberOfRows; i++) { %>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <!-- Utilizar un id único concatenando el índice de la fila -->
+                    <label for="id_<%= i %>" class="form-label">ID:</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fa-solid fa-barcode"></i></span>
+                      <input type="text" class="form-control" id="id_<%= i %>" name="id" required onchange="updateSales.buscarProductoPorId(this)">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label for="producto_<%= i %>" class="form-label">Producto:</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fa-solid fa-box"></i></span>
+                      <input type="text" class="form-control" id="producto_<%= i %>" name="producto" required readonly>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label for="precio_<%= i %>" class="form-label">Precio:</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fa-solid fa-money-check-dollar"></i></span>
+                      <input type="number" class="form-control" id="precio_<%= i %>" name="precio" readonly required placeholder="$" onchange="updateSales.calcularSubtotal()">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="mb-3">
+                    <label for="stock_<%= i %>" class="form-label">Stock:</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fa-solid fa-dolly"></i></span>
+                      <input type="number" class="form-control" id="stock_<%= i %>" name="stock" readonly>
+                    </div>
+                  </div>
+                </div>
+                <div class="row justify-content-center">
+                  <div class="col-md-3">
+                    <div class="mb-3">
+                      <label for="cantidad" class="form-label">Cantidad:</label>
+                      <div class="input-group">
+                        <span class="input-group-text"><i class="fa-solid fa-people-carry-box"></i></span>
+                        <input type="number" class="form-control" id="cantidad_<%= i %>" name="cantidad" required onchange="updateSales.calcularSubtotal()">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-mb-3"> <!-- Coloca aquí el tamaño que desees -->
+                  <button type="button" class="btn delete-button" onclick="updateSales.eliminarFila(this)">
+                    <i class="fa-solid fa-trash-can"></i>
+                  </button>
+                </div>
+                <div style="margin-top: 50px;">
+                </div>
+              </div>
+              <% } %>
+            </div>
+          </fieldset>
+        </form>             
+      </div>
+      <div class="text-center">
+        <a href="/gestion_ventas" class="btn consult-button"><i class="fa-solid fa-arrow-left"></i> Regresar</a>
+      </div>
+    </section>
+    <script src="/js/validaciones.js"></script>
+    <script src="/js/update_sales.js"></script>
+    <script>
+      const updateSales = new UpdateSales();
+      // Agregar event listener al campo de cédula para verificar la cédula
+      document.getElementById('ci').addEventListener('input', () => {
+        updateSales.verificarCedula();
+      });
+      // Agregar event listener al formulario de venta para manejar el envío
+      document.getElementById('form').addEventListener('submit', (event) => {
+        event.preventDefault(); // Evitar el envío predeterminado del formulario
+        updateSales.update(event); // Llamar al método update del objeto updateSales
+      });
+    </script>
+    <%- include('../partials/footer') %>
+</body>

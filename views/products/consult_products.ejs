@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <%- include('../partials/head') %>
+  <title>SGV | Consultar Productos</title>
+</head>
+<body>
+  <!-- Navbar -->
+  <%- include('../partials/navbar') %>
+
+  <!-- Contenido -->
+  <section id="services" class="services">
+    <div class="container">
+      <br><br><br><br>
+      <div class="section-title" data-aos="fade-up">
+        <h2>CONSULTAR INFORMACION DE PRODUCTOS</h2>
+        <p>Consulte informacion de productos.</p>
+      </div>
+      <div class="container p-4">
+        <div class="row">
+          <% products.forEach(function (product) { %>
+          <div class="col-md-4">
+            <div class="card mb-3">
+              <div class="card-header-consult">
+                <div class="avatar">
+                  <img src="<%= product.imagen || 'https://cdn3d.iconscout.com/3d/premium/thumb/delivery-box-6377301-5298715.png?f=webp' %>" alt="Avatar">
+                </div>
+              </div>
+              <div class="card-body">
+                <h2 class="card-title text-center"><%= product.descripcion %></h2>
+              </div>
+              <div class="card-footer">
+                <p class="card-text text-center"><strong>ID: </strong><%= product.id %></p><hr>
+                <p class="card-text text-center"><strong>PRECIO: </strong><%= product.precio %></p><hr>
+                <p class="card-text text-center"><strong>STOCK: </strong><%= product.stock %></p><hr>
+              </div>
+            </div>
+          </div>
+          <% }) %>
+        </div>
+      </div>
+      <div class="text-center">
+        <a href="/gestion_productos" class="btn consult-button">
+          <i class="fa-solid fa-arrow-left"></i> Regresar
+        </a>
+      </div>
+      <!-- Información adicional -->
+      <div class="section-title" data-aos="fade-up">
+        <h2>Información Adicional</h2>
+        <div class="container p-4">
+          <div class="row">
+              <div class="col-md-12">
+                  <table class="table table-bordered table-hover">
+                      <thead class="thead-dark">
+                          <tr>
+                              <th><i class="fas fa-tags"></i> CATEGORÍA</th>
+                              <th><i class="fas fa-info-circle"></i> DESCRIPCIÓN</th>
+                              <th><i class="fas fa-dollar-sign"></i> PRECIO</th>
+                              <th><i class="fas fa-box"></i> STOCK</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td><h4><i class="fas fa-arrow-up"></i> Producto más caro:</h4></td>
+                              <% if (mostExpensiveProduct !== null) { %>
+                                <td><%= mostExpensiveProduct.descripcion %></td>
+                                <td><i class="fa-solid fa-coins"></i> <%= mostExpensiveProduct.precio %></td>
+                                <td><i class="fa-solid fa-dolly"></i> <%= mostExpensiveProduct.stock %></td>
+                              <% } else { %>
+                                <td colspan="3">No hay productos disponibles</td>
+                              <% } %>
+                          </tr>
+                          <tr>
+                              <td><h4><i class="fas fa-arrow-down"></i> Producto más barato:</h4></td>
+                              <% if (cheapestProduct !== null) { %>
+                                <td><%= cheapestProduct.descripcion %></td>
+                                <td><i class="fa-solid fa-coins"></i> <%= cheapestProduct.precio %></td>
+                                <td><i class="fa-solid fa-people-carry-box"></i> <%= cheapestProduct.stock %></td>
+                              <% } else { %>
+                                <td colspan="3">No hay productos disponibles</td>
+                              <% } %>
+                          </tr>
+                          <tr>
+                              <td><h4><i class="fas fa-exclamation-circle"></i> Producto con menos unidades en stock:</h4></td>
+                              <% if (lowestStockProduct !== null) { %>
+                                <td><%= lowestStockProduct.descripcion %></td>
+                                <td><i class="fa-solid fa-coins"></i> <%= lowestStockProduct.precio %></td>
+                                <td><i class="fa-solid fa-box-open"></i> <%= lowestStockProduct.stock %></td>
+                              <% } else { %>
+                                <td colspan="3">No hay productos disponibles</td>
+                              <% } %>
+                          </tr>
+                          <tr>
+                              <td><h4><i class="fas fa-boxes"></i> Producto con más unidades en stock:</h4></td>
+                              <% if (highestStockProduct !== null) { %>
+                                <td><%= highestStockProduct.descripcion %></td>
+                                <td><i class="fa-solid fa-coins"></i> <%= highestStockProduct.precio %></td>
+                                <td><i class="fa-solid fa-boxes-stacked"></i> <%= highestStockProduct.stock %></td>
+                              <% } else { %>
+                                <td colspan="3">No hay productos disponibles</td>
+                              <% } %>
+                          </tr>
+                          <tr>
+                            <td colspan="4" class="text-center">
+                                <h4><i class="fas fa-money-bill-wave"></i> Ganancia estimada por la venta de los productos:</h4>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td colspan="4" class="text-center"><i class="fa-solid fa-comments-dollar"></i> <%= totalProfit %></td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+  <%- include('../partials/footer') %>
+</body>
+</html>

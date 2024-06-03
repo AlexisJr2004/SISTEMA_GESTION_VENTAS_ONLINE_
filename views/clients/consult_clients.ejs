@@ -1,0 +1,96 @@
+<head>
+  <%- include('../partials/head') %>
+  <title>SGV | Consultar Clientes</title>
+</head>
+<body>
+  <!-- Navbar -->
+  <%- include('../partials/navbar') %>
+
+  <!-- Contenido -->
+  <section id="services" class="services">
+    <div class="container">
+      <br>
+      <br>
+      <br>
+      <br>
+      <div class="section-title" data-aos="fade-up">
+        <h2>CONSULTAR INFORMACION DE CLIENTES</h2>
+        <p>Consulte informacion de clientes.</p>
+      </div>
+      <div class="section-title" data-aos="fade-up">
+        <label for="clientFilter" class="form-label">FILTRAR POR TIPO DE CLIENTE:</label>
+        <select class="form-select form-select-sm" id="clientFilter">
+            <option value="all">Todos los clientes</option>
+            <option value="regular">Clientes regulares</option>
+            <option value="vip">Clientes VIP</option>
+        </select>
+      </div>
+      <div class="container p-4">
+        <div class="row">
+          <% if (clients.length === 0) { %>
+            <div class="col-md-12 text-center">
+              <p>No hay clientes disponibles. Por favor, agregue clientes para visualizarlos.</p>
+            </div>
+          <% } else { %>
+            <% clients.forEach(function (client) { %>
+              <div class="col-md-4">
+                <div class="card mb-3">
+                  <div class="card-header-consult">
+                    <div class="avatar">
+                      <img src="<%= client.imagen || 'https://cdn-icons-png.flaticon.com/512/12267/12267913.png' %>" alt="Avatar">
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <h2 class="card-title text-center"><%= client.nombre %> <%= client.apellido %></h2>
+                  </div>
+                  <div class="card-footer">
+                    <p class="card-text text-center"><strong>DNI: </strong><br><%= client.dni %><hr></p>
+                    <% if (client.valor) { %>
+                      <p class="card-text text-center"><strong>DESCUENTO: </strong><br><%= client.valor %><hr></p>
+                    <% } else { %>
+                      <p class="card-text text-center"><strong>DESCUENTO: </strong><br>No se le aplica un descuento al cliente.<hr></p>
+                    <% } %>
+                    <% if (client.tarjeta) { %>
+                      <p class="card-text text-center"><strong>TARJETA: </strong><br><%= client.numeroTarjeta %><hr></p>
+                    <% } else { %>
+                      <p class="card-text text-center"><strong>TARJETA: </strong><br>El cliente no tiene tarjeta<hr></p>
+                    <% } %>
+                    <p class="card-text text-center" data-type="<%= client.tipo.toLowerCase() %>"><strong>TIPO DE CLIENTE: </strong><br><%= client.tipo %></p><hr>
+                    <button class="btn consult-button" onclick="mostrarInformacion('<%= client.nombre %> <%= client.apellido %>')"><i class="fa-solid fa-magnifying-glass fa-fade"></i> Más información</button><hr>
+                  </div>
+                </div>
+              </div>
+            <% }) %>
+          <% } %>
+        </div>
+      </div>
+      <div class="text-center">
+        <a href="/gestion_clientes" class="btn consult-button">
+          <i class="fa-solid fa-arrow-left"></i> Regresar
+        </a>
+      </div>
+    </div>
+  </section>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+  <script>
+    const clientFilter = document.getElementById('clientFilter');
+    const clientCards = document.querySelectorAll('.col-md-4');
+    clientFilter.addEventListener('change', () => {
+      const selectedOption = clientFilter.value;
+      clientCards.forEach(card => {
+      const clientType = card.querySelector('.card-footer p[data-type]').getAttribute('data-type');
+        if (selectedOption === 'all') {
+          card.style.display = 'block';
+        } else if (selectedOption === 'regular' && clientType === 'regular') {
+          card.style.display = 'block';
+        } else if (selectedOption === 'vip' && clientType === 'vip') {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  </script>
+  <%- include('../partials/footer') %>
+</body>
+</html>

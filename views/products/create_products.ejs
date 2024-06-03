@@ -1,0 +1,102 @@
+<head>
+  <%- include('../partials/head') %>
+    <title>SGV | Crear Productos</title>
+</head>
+
+<body>
+  <%- include('../partials/navbar') %>
+    <!-- Contenido -->
+    <section id="services" class="services">
+      <div class="container">
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="section-title" data-aos="fade-up">
+          <h2>INGRESAR PRODUCTOS</h2>
+          <p>Ingrese los datos para registrar un nuevo producto.</p>
+        </div>
+        <form id="form" class="card card-body bg-light p-4 rounded" method="POST" action="/products/create" onsubmit="validarFormularioProductos(event)">
+          <fieldset>
+            <div class="row mb-3">
+              <div class="col-md-6">
+                <label for="id" class="form-label">ID del producto:</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fa-solid fa-barcode"></i></span>
+                  <input type="number" class="form-control" id="id" name="id" value="<%= newId %>" required readonly>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label for="descripcion" class="form-label">Nombre del producto:</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fa-solid fa-box-open"></i></span>
+                  <input type="text" class="form-control" id="descripcion" name="descripcion" required>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="stock" class="form-label">Stock de producto en bodega:</label>
+                    <div class="input-group">
+                      <span class="input-group-text"><i class="fa-solid fa-dolly"></i></span>
+                      <input type="number" class="form-control" id="stock" name="stock" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label for="precio" class="form-label">Precio del producto:</label>
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="fa-solid fa-dollar-sign"></i></span>
+                        <input type="text" class="form-control" id="precio" name="precio" required step="0.01">
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="imagen" class="form-label">URL Imagen del producto referencial:</label>
+                <div class="input-group">
+                  <span class="input-group-text"><i class="fa-solid fa-image"></i></span>
+                  <input type="text" class="form-control" id="imagen" name="imagen">
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn consult-button"><i class="fa-solid fa-boxes-packing"></i> Agregar producto</button>
+            </div>
+          </fieldset>
+        </form>
+        <div class="text-center">
+          <a href="/gestion_productos" class="btn consult-button">
+            <i class="fa-solid fa-arrow-left"></i> Regresar
+          </a>
+        </div>
+      </div>
+    </section>
+    
+    <script src="/js/validaciones.js"></script>
+    <%- include('../partials/footer') %>
+    <script>
+      document.getElementById('form').addEventListener('submit', function(event) {
+        const descripcion = document.getElementById('descripcion').value;
+        // Verificar si la descripción ya existe
+        if (productos.some(producto => producto.descripcion === descripcion)) {
+          event.preventDefault(); // Evitar que el formulario se envíe
+          document.getElementById('descripcion-error').innerText = 'El producto ya existe';
+          mostrarSweetAlert(); // Llamar a la función para mostrar el SweetAlert
+        }
+      });
+    </script>
+    <script>
+      const productos = <%- JSON.stringify(products || []) %>;
+      console.log(productos); // Agrega esta línea para verificar el contenido de la variable
+    </script>
+    <script>
+      function mostrarSweetAlert() {
+        Swal.fire({
+          title: 'Error',
+          text: 'El producto ya existe',
+          icon: 'error',
+          confirmButtonText: 'Aceptar'
+        }).then(() => {
+            window.location.reload();
+          });
+        }
+    </script>
+</body>
